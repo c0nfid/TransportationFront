@@ -1,0 +1,12 @@
+.App {
+    display: flex;
+    align-items: flex-start;
+    background: #FFF;
+    flex-direction: row;
+}
+.Body{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}

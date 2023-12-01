@@ -1,0 +1,8 @@
+.Menu{
+    display: flex;
+    padding: 125px 25px 72px 25px;
+    flex-direction: column;
+    align-items: center;
+    gap: 43px;
+    background: linear-gradient(180deg, #DCF4C5 0%, rgba(218, 248, 239, 0.00) 100%);
+}
