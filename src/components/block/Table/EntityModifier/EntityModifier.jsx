@@ -24,7 +24,7 @@ const EntityModifier = () => {
 
     return <div className={classes.EntityStyle}>
         <span>Изменение таблицы {section} </span>
-        <div>
+        <div className={classes.inputColumn}>
         {keys.map(field_name => <MyInput
             field_name={field_name}
             newEntity={newEntity}

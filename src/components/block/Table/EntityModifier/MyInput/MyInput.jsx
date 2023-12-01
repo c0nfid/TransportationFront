@@ -6,8 +6,8 @@ const MyInput = ({field_name, newEntity}) => {
     const [text, setText] = useState(newEntity[field_name])
 
     return (
-        <label className={classes.InputLabel}>
-            {field_name}
+        <label className={classes.Input}>
+            <div className={classes.InputLabel}>{field_name}</div>
             <input className={classes.InputStyle} value={text} onChange={e => {
                 setText(e.target.value)
                 newEntity[field_name] = e.target.value

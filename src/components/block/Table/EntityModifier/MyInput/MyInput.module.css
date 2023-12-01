@@ -1,12 +1,13 @@
-.InputLabel{
+.Input{
     display: flex;
     flex-direction: column;
-    color: white;
-    font-size: 20px;
     margin-bottom: 5px;
+    color: white;
+    position: relative;
 }
 .InputStyle{
     padding: 10px;
+    font-size: 15px;
     border-radius: 5px;
     border: 2px solid #9892a7;
     background-color: rgba(255, 255, 255, 0);
@@ -15,8 +16,17 @@
 }
 .InputStyle:focus {
     border-color: #f1af80;
+    color: #f1af80;
 }
 
 .InputStyle:disabled {
     border-color: #9892a7;
+}
+.InputLabel{
+    position: absolute;
+    top: -8px;
+    left: 5px;
+    padding: 0 5px;
+    font-size: 12px;
+    background-color: #3a3a3a;
 }
