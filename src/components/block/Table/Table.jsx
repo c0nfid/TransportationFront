@@ -5,7 +5,7 @@ import HeaderTable from "./HeaderTable/HeaderTable";
 
 const Table = ({data, isModalVisible, setIsModalVisible}) => {
 
-
+    console.log(data)
     return (
         <div className={classes.table}>
             <HeaderTable content={data[0]}/>

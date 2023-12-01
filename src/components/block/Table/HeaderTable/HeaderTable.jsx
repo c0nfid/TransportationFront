@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react';
 import classes from "./Header.module.css"
-import edit from "../../../ui/icons/edit.svg";
+import edit from "../../../../ui/icons/edit.svg";
 
-import {ApplicationContext} from "../../../App";
+import {ApplicationContext} from "../../../../App";
 const HeaderTable = ({content}) => {
     content = content ? content : {}
 
@@ -15,6 +15,7 @@ const HeaderTable = ({content}) => {
     return (
     (<>
         <div className={classes.entityWrapper}>
+            {header(titles.pop())}
             {titles.map(e => header(e))}
         </div>
     </>)

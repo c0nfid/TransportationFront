@@ -1,8 +1,9 @@
 import React from 'react';
-import StyledButton from "./StyledButton";
+import StyledButton from "../../../ui/StyledButton/StyledButton";
 import styled from "styled-components";
-import '../styles/Header.css';
+import classes from "./Header.module.css"
 import axios from "axios";
+
 const Header = (props) => {
     const Text = styled.text`
       font-family: Gilroy;
@@ -13,21 +14,13 @@ const Header = (props) => {
       display: block;
     `;
 
-    async function postAutos(){
-        const data = {
-            "name": "Belarus",
-            "vendor_country": "Belorussia"
-        }
-        const response = await axios.post('http://127.0.0.1:8000/models/', data)
-    }
-
     return (
-        <div className="Header">
-            <div className="Description">
+        <div className={classes.Header}>
+            <div className={classes.Description}>
                 <Text>Таблица {props.nameTable}</Text>
                 <Text>Дата: {props.date}</Text>
             </div>
-            <div className="ButtonList">
+            <div className={classes.ButtonList}>
                 <StyledButton>Добавить запись</StyledButton>
                 <StyledButton>Изменить запись</StyledButton>
                 <StyledButton>Удалить запись</StyledButton>

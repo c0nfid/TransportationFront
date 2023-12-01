@@ -1,0 +1,12 @@
+.EntityStyle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+}
+.buttonLine{
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+}

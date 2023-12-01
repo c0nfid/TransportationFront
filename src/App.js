@@ -1,13 +1,12 @@
 import React, {createContext, useEffect, useState} from "react";
 import './styles/App.css';
-import Menu from "./ui/Menu";
-import Header from "./ui/Header";
-import TableComponent from "./ui/TableComponent";
+
+import Header from "./components/block/Header/Header";
 import $api from "./http/api";
-import axios from "axios";
-import Table from "./components/Table/Table";
+import Table from "./components/block/Table/Table";
 import ModalWindow from "./ui/ModalWindow/ModalWindow";
-import EntityModifier from "./components/Table/EntityModifier/EntityModifier";
+import EntityModifier from "./components/block/Table/EntityModifier/EntityModifier";
+import Menu from "./components/block/Menu/Menu";
 
 export const ApplicationContext = createContext(null)
 
@@ -15,22 +14,18 @@ export const ApplicationContext = createContext(null)
 
 function App() {
     const [data, setData] = useState([]);
-    const [section, setSection] = useState("models")
+    const [section, setSection] = useState("model")
     const [isModalVisible, setIsModalVisible] = useState(false)
     const [entity, setEntity] = useState(null)
 
     async function fetchData() {
-        const response = await $api.get(`/${section}`)
-        setData(response.data)
+        $api.get(`/${section}s`).then(response => setData(response.data))
     }
-
-
 
 
     useEffect(() => {
         fetchData().then()
-        console.log("fetchdata")
-    }, []);
+    }, [section]);
 
 
 
@@ -42,7 +37,7 @@ function App() {
                 <ModalWindow isVisible={isModalVisible} setIsVisible={setIsModalVisible}><EntityModifier/></ModalWindow>
                 <Menu/>
                 <div className="Body">
-                    <Header nameTable='Автопарк' date='17.11.2023'/>
+                    <Header nameTable={section} date='17.11.2023'/>
                     <Table data={data} {...{isModalVisible, setIsModalVisible}} />
                     <button onClick={fetchData}>update</button>
                 </div>

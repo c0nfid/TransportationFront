@@ -1,13 +1,13 @@
 import React, {useContext, useState} from 'react';
 import classes from "./EntityTable.module.css"
-import edit from "../../../ui/icons/edit.svg";
+import edit from "../../../../ui/icons/edit.svg";
 
-import {ApplicationContext} from "../../../App";
+import {ApplicationContext} from "../../../../App";
 
-function separateIdAndContentCells(row) {
+function separateIdAndContentCells(row, section) {
 
     const keys = Object.keys(row)
-    const idKey = findIdString(keys)
+    const idKey = findIdString(keys, section)
     const contentCells = {...row}
     delete contentCells[idKey]
 
@@ -15,23 +15,22 @@ function separateIdAndContentCells(row) {
     return [{"id": row[idKey]}, contentCells]
 }
 
-function findIdString(strings) {
-    return strings.find(str => str.includes('_id') || str.includes('id_')) || null;
+function findIdString(strings, section) {
+    return strings.find(str => str.includes('_id') || str.includes(`id_${section}`)) || null;
 }
 
 
 const EntityTable = ({content, isModalVisible, setIsModalVisible}) => {
     content = !!content ? content : {}
-    const {entity, setEntity} = useContext(ApplicationContext)
-    console.log(content)
-    const [idCell, contentCells] = separateIdAndContentCells(content)
-    const [row, setRow] = useState(contentCells)
+    const {entity, setEntity, section} = useContext(ApplicationContext)
+    const [idCell, contentCells] = separateIdAndContentCells(content, section)
+
 
     const cellWidth = 100 / Object.keys(content).length
 
     function callEditModalWindow() {
         setIsModalVisible(true)
-        setEntity([row, setRow, idCell.id])
+        setEntity([contentCells, idCell.id, setIsModalVisible])
     }
 
 
@@ -50,9 +49,9 @@ const EntityTable = ({content, isModalVisible, setIsModalVisible}) => {
             <div className={classes.entityWrapper}>
                 {editWithId}
 
-                {(Object.values(row)).map((e, idx) => <div key={idx} className={classes.cell}
+                {(Object.values(contentCells)).map((e, idx) => <div key={idx} className={classes.cell}
                                                              style={{width: `${cellWidth}%`}}>
-                    <p>{e}</p></div>)}
+                    <p>{String(e)}</p></div>)}
             </div>
         </>)
 

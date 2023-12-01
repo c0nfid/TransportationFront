@@ -6,3 +6,13 @@
     gap: 43px;
     background: linear-gradient(180deg, #DCF4C5 0%, rgba(218, 248, 239, 0.00) 100%);
 }
+.HeaderText{
+    color: rgba(0, 0, 0, 0.70);
+    font-size: 36px;
+    font-family: Gilroy;
+    font-weight: 600;
+    word-wrap: break-word;
+    text-align: center;
+    width: 288px;
+    flex-shrink: 0;
+}
