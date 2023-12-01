@@ -3,9 +3,8 @@ import classes from "./Table.module.css"
 import EntityTable from "./EntityTable/EntityTable";
 import HeaderTable from "./HeaderTable/HeaderTable";
 
-const Table = ({data: original_data, isModalVisible, setIsModalVisible}) => {
+const Table = ({data, isModalVisible, setIsModalVisible}) => {
 
-    const data = original_data.map(a => ({...a}));
 
     return (
         <div className={classes.table}>

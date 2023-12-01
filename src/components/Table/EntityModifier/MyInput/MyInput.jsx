@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 
-const MyInput = ({field_name, row, setRow}) => {
+const MyInput = ({field_name, newEntity}) => {
 
-    const [text, setText] = useState(row[field_name])
+    const [text, setText] = useState(newEntity[field_name])
 
     return (
         <label>
             {field_name}
-            <input value={text} onChange={e => setText(e.target.value)}/>
+            <input value={text} onChange={e => {
+                setText(e.target.value)
+                newEntity[field_name] = e.target.value
+            }}/>
         </label>
     );
 };

@@ -23,7 +23,7 @@ function findIdString(strings) {
 const EntityTable = ({content, isModalVisible, setIsModalVisible}) => {
     content = !!content ? content : {}
     const {entity, setEntity} = useContext(ApplicationContext)
-
+    console.log(content)
     const [idCell, contentCells] = separateIdAndContentCells(content)
     const [row, setRow] = useState(contentCells)
 
@@ -31,7 +31,7 @@ const EntityTable = ({content, isModalVisible, setIsModalVisible}) => {
 
     function callEditModalWindow() {
         setIsModalVisible(true)
-        setEntity([row, setRow])
+        setEntity([row, setRow, idCell.id])
     }
 
 
